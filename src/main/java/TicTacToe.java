@@ -80,6 +80,7 @@ public class TicTacToe {
      *
      * @return the winner's GamePiece or null if there is no winner at the time the method is invoked
      */
+
     public GamePiece getWinner() {
         GamePiece winner = null;
 
@@ -89,13 +90,16 @@ public class TicTacToe {
                 {0, 4, 8}, {2, 4, 6}             // diagonal winning combinations
         };
 
-        // TODO: add code here
-        for(int i = 0; i < combos.length; i++){
+        // Ensure the board is not null before proceeding
+        if (board == null) {
+            return null;
+        }
+
+        for (int i = 0; i < combos.length; i++) {
             GamePiece piece = getPiece(combos[i][0]);
-            if (piece == null || getPiece(combos[i][1]) == null || getPiece(combos[i][2]) == null){
+            if (piece == null || getPiece(combos[i][1]) == null || getPiece(combos[i][2]) == null) {
                 continue;
-            }
-            else if(piece.getPiece() == getPiece(combos[i][1]).getPiece() & piece.getPiece() == getPiece(combos[i][2]).getPiece()){
+            } else if (piece.getPiece() == getPiece(combos[i][1]).getPiece() && piece.getPiece() == getPiece(combos[i][2]).getPiece()) {
                 winner = piece;
                 break;
             }
