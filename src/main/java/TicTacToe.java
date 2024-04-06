@@ -85,25 +85,28 @@ public class TicTacToe {
         GamePiece winner = null;
 
         int[][] combos = {
-                {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // horizontal winning combinations
-                {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // vertical winning combinations
-                {0, 4, 8}, {2, 4, 6}             // diagonal winning combinations
+                {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
+                {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
+                {0, 4, 8}, {2, 4, 6}
         };
 
-        // Ensure the board is not null before proceeding
         if (board == null) {
             return null;
         }
 
         for (int i = 0; i < combos.length; i++) {
-            GamePiece piece = getPiece(combos[i][0]);
-            if (piece == null || getPiece(combos[i][1]) == null || getPiece(combos[i][2]) == null) {
-                continue;
-            } else if (piece.getPiece() == getPiece(combos[i][1]).getPiece() && piece.getPiece() == getPiece(combos[i][2]).getPiece()) {
-                winner = piece;
-                break;
+            GamePiece piece1 = getPiece(combos[i][0]);
+            GamePiece piece2 = getPiece(combos[i][1]);
+            GamePiece piece3 = getPiece(combos[i][2]);
+
+            if (piece1 != null && piece2 != null && piece3 != null) {
+                if (piece1.getPiece() == piece2.getPiece() && piece1.getPiece() == piece3.getPiece()) {
+                    winner = piece1;
+                    break;
+                }
             }
         }
+
         return winner;
     }
 
