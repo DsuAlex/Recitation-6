@@ -90,9 +90,7 @@ public class TicTacToe {
                 {0, 4, 8}, {2, 4, 6}
         };
 
-        if (board == null) {
-            return null;
-        }
+
 
         for (int i = 0; i < combos.length; i++) {
             GamePiece piece1 = getPiece(combos[i][0]);
